@@ -13,6 +13,11 @@ public class BreadTest {
 	{	
 		testA.Add(0, testB);
 		assertEquals(testA.getSize(), 1);
+	}
+	
+	@Test
+	public void testRemove()
+	{
 		testA.Remove(0);
 		assertEquals(testA.getSize(), 0);
 	}
