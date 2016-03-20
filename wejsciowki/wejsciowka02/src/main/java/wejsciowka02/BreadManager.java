@@ -1,0 +1,27 @@
+package wejsciowka02;
+
+public class BreadManager {
+
+	private IBreadManager breadManager;
+
+	public BreadManager(IBreadManager breadManager)
+	{
+		this.breadManager = breadManager;
+	}
+	
+	public boolean Add(Bread bread)
+	{
+		return breadManager.Add(bread);
+	}
+	
+	public boolean Remove(int number)
+	{
+		return breadManager.Remove(number);
+	}
+	
+	public int ReturnSize()
+	{
+		return breadManager.ReturnSize();
+	}
+	
+}
