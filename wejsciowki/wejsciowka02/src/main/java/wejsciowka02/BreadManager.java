@@ -24,4 +24,14 @@ public class BreadManager {
 		return breadManager.ReturnSize();
 	}
 	
+	public Bread Get(int code)
+	{
+		return breadManager.Get(code);
+	}
+	
+	public boolean Find(int code)
+	{
+		return breadManager.Find(code);
+	}
+	
 }

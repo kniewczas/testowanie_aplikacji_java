@@ -2,45 +2,24 @@ package wejsciowka02;
 
 public class Bread {
 
-	private int a;
-	private String b;
-	private double c;
-	private String d;
+	private String name;
+	private double price;
+	private int code;
 	
-	public Bread(int a, String b, double c)
+	public Bread(String name, double price, int code)
 	{
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		this.name = name;
+		this.price = price;
+		this.code = code;
 	}
 	
-	public int GetA()
+	public String GetName()
 	{
-		return this.a;
+		return this.name;
 	}
 	
-	public String GetB()
+	public int GetCode()
 	{
-		return this.b;
-	}
-	
-	public double GetC()
-	{
-		return this.c;
-	}
-	
-	public void SetA(int a)
-	{
-		this.a = a;
-	}
-	
-	public void SetB(String b)
-	{
-		this.b = b;
-	}
-	
-	public void GetC(double c)
-	{
-		this.c = c;
+		return this.code;
 	}
 }
