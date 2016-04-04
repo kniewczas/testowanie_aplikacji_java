@@ -25,7 +25,7 @@ public class BreadTest {
 	@Test
 	public void breadSimpleTest()
 	{
-		Bread bread = new Bread(1,(float) 5.3,5.5);	
+		Bread bread = new Bread(1, "bread",5.5);	
 		expect(mock.Add(bread)).andReturn(true).atLeastOnce();
 		expect(mock.Remove(0)).andReturn(true).atLeastOnce();
 		expect(mock.ReturnSize()).andReturn(1).atLeastOnce();

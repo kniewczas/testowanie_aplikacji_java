@@ -3,10 +3,11 @@ package wejsciowka02;
 public class Bread {
 
 	private int a;
-	private float b;
+	private String b;
 	private double c;
+	private String d;
 	
-	public Bread(int a, float b, double c)
+	public Bread(int a, String b, double c)
 	{
 		this.a = a;
 		this.b = b;
@@ -18,7 +19,7 @@ public class Bread {
 		return this.a;
 	}
 	
-	public float GetB()
+	public String GetB()
 	{
 		return this.b;
 	}
@@ -33,7 +34,7 @@ public class Bread {
 		this.a = a;
 	}
 	
-	public void SetB(float b)
+	public void SetB(String b)
 	{
 		this.b = b;
 	}
