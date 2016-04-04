@@ -13,9 +13,6 @@ public class BreadTest {
 	private BreadManager breadManager;
 	private IBreadManager mock;
 	
-	//Bread bread = new Bread(3,(float) 4.5,23.3);
-	//List<Bread> breads;
-	
 	@Before
 	public void setUp() {
 		mock = createMock(IBreadManager.class);
@@ -30,8 +27,8 @@ public class BreadTest {
 		expect(mock.Remove(0)).andReturn(true).atLeastOnce();
 		expect(mock.ReturnSize()).andReturn(1).atLeastOnce();
 		replay(mock);
-		assertEquals(breadManager.Add(bread),true);
-		assertEquals(breadManager.Remove(0),true);
-		assertEquals(breadManager.ReturnSize(),1);
+		assertEquals(true, breadManager.Add(bread));
+		assertEquals(true, breadManager.Remove(0));
+		assertEquals(1,breadManager.ReturnSize());
 	}
 }
