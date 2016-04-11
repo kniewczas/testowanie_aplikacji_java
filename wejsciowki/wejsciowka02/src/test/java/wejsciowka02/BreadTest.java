@@ -1,8 +1,6 @@
 package wejsciowka02;
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
 import java.util.List;
 
@@ -28,20 +26,20 @@ public class BreadTest {
 		expect(mock.Add(bread)).andReturn(true).atLeastOnce();
 		expect(mock.Get(bread.GetCode())).andReturn(bread);
 		replay(mock);
-		//assertEquals()	
+		breadManager.Add(bread);
+		assertEquals(bread,breadManager.Get(4525));
+		verify(mock);	
 	}
 	
-	/*@Test
-	public void breadSimpleTest()
+	@Test
+	public void removeTest()
 	{
-		Bread bread = new Bread(1, "bread",5.5);
-		
-		expect(mock.Add(bread)).andReturn(true).atLeastOnce();
-		expect(mock.Remove(0)).andReturn(true).atLeastOnce();
-		expect(mock.ReturnSize()).andReturn(1).atLeastOnce();
+		expect(mock.Remove(4525)).andReturn(true).atLeastOnce();
+		expect(mock.GetSize()).andReturn(0).atLeastOnce();
 		replay(mock);
-		assertEquals(true, breadManager.Add(bread));
-		assertEquals(true, breadManager.Remove(0));
-		assertEquals(3,breadManager.ReturnSize());
-	}*/
+		breadManager.Remove(4525);
+		int size = breadManager.GetSize();
+		assertEquals(0, size);
+		verify(mock);
+	}
 }

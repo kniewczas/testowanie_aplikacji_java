@@ -7,5 +7,5 @@ public interface IBreadManager {
 	boolean Remove(int number);
 	Bread Get(int code);
 	boolean Find(int code);
-	int ReturnSize();
+	int GetSize();
 }

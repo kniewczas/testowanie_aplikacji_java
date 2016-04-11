@@ -19,9 +19,9 @@ public class BreadManager {
 		return breadManager.Remove(number);
 	}
 	
-	public int ReturnSize()
+	public int GetSize()
 	{
-		return breadManager.ReturnSize();
+		return breadManager.GetSize();
 	}
 	
 	public Bread Get(int code)
