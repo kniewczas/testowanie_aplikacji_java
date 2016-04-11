@@ -15,9 +15,8 @@ public class MessengerTest {
 
 	private Messenger messenger;
 	private MessageService mock;
-
-	static final String VALID_SERVER = "inf.ug.edu.pl";
-	static final String VALID_MESSAGE = "some message";
+	static final String SERVER = "inf.ug.edu.pl";
+	static final String MESSAGE = "Hello!";
 	
 	@Before
 	public void setUp() {
@@ -27,17 +26,17 @@ public class MessengerTest {
 
 	@Test
 	public void testConnection() {
-		expect(mock.checkConnection(VALID_SERVER)).andReturn(ConnectionStatus.SUCCESS).atLeastOnce();
+		expect(mock.checkConnection(SERVER)).andReturn(ConnectionStatus.SUCCESS).atLeastOnce();
 		replay(mock);
-		assertEquals(0, messenger.testConnection(VALID_SERVER));
+		assertEquals(0, messenger.testConnection(SERVER));
 		verify(mock);
 	}
 	
 	@Test
 	public void testSending() throws MalformedRecipientException{
-		expect(mock.send(VALID_SERVER, VALID_MESSAGE)).andReturn(SendingStatus.SENT).atLeastOnce();
+		expect(mock.send(SERVER, MESSAGE)).andReturn(SendingStatus.SENT).atLeastOnce();
 		replay(mock);
-		assertEquals(0,messenger.sendMessage(VALID_SERVER, VALID_MESSAGE));
+		assertEquals(0,messenger.sendMessage(SERVER, MESSAGE));
 	}
 	
 }
