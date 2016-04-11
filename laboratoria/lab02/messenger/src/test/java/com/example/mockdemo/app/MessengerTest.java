@@ -37,6 +37,7 @@ public class MessengerTest {
 		expect(mock.send(SERVER, MESSAGE)).andReturn(SendingStatus.SENT).atLeastOnce();
 		replay(mock);
 		assertEquals(0,messenger.sendMessage(SERVER, MESSAGE));
+		verify(mock);
 	}
 	
 }
