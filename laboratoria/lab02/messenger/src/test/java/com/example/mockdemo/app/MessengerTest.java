@@ -15,8 +15,8 @@ public class MessengerTest {
 
 	private Messenger messenger;
 	private MessageService mock;
-	static final String SERVER = "inf.ug.edu.pl";
-	static final String MESSAGE = "Hello!";
+	static String SERVER = "inf.ug.edu.pl";
+	static String MESSAGE = "Hello!";
 	
 	@Before
 	public void setUp() {
