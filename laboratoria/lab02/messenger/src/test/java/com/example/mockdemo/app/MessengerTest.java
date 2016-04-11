@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.example.mockdemo.messenger.ConnectionStatus;
+import com.example.mockdemo.messenger.MalformedRecipientException;
 import com.example.mockdemo.messenger.MessageService;
+import com.example.mockdemo.messenger.SendingStatus;
 
 
 public class MessengerTest {
@@ -30,4 +32,12 @@ public class MessengerTest {
 		assertEquals(0, messenger.testConnection(VALID_SERVER));
 		verify(mock);
 	}
+	
+	@Test
+	public void testSending() throws MalformedRecipientException{
+		expect(mock.send(VALID_SERVER, VALID_MESSAGE)).andReturn(SendingStatus.SENT).atLeastOnce();
+		replay(mock);
+		assertEquals(0,messenger.sendMessage(VALID_SERVER, VALID_MESSAGE));
+	}
+	
 }
