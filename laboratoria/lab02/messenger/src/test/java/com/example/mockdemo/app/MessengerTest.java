@@ -24,7 +24,7 @@ public class MessengerTest {
 	}
 
 	@Test
-	public void testConnectionWithResult0() {
+	public void testConnection() {
 		expect(mock.checkConnection(VALID_SERVER)).andReturn(ConnectionStatus.SUCCESS).atLeastOnce();
 		replay(mock);
 		assertEquals(0, messenger.testConnection(VALID_SERVER));
