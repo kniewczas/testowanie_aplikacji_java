@@ -1,9 +1,9 @@
 package wejsciowka03;
 
-import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -13,7 +13,7 @@ public class BreadManagerSteps {
 	
 	BreadManager breadManager;
 	private IBreadManager IBreadManager;
-	private List<Bread> breadlist;
+	private List<Bread> breadlist = new ArrayList<Bread>();
 	
 	@Given("a bread manager")
 	public void initiallizeBreadManager() {
@@ -26,9 +26,14 @@ public class BreadManagerSteps {
 		breadManager.Add(bread);		
 	}
 	
+	@When("remove bread with code $code")
+	public void removeBread(int code) {
+		breadManager.Remove(code);		
+	}
+	
 	@Then("amount of breads should be $number")
 	public void checkAmount(int number) {
-		assertEquals(number, breadlist.size());
+		assertEquals(number, breadManager.GetSize());
 	}
 	
 	@Then("there should exists bread with number: $code")

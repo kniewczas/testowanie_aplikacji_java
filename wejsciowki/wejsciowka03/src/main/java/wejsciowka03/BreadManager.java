@@ -1,15 +1,15 @@
 package wejsciowka03;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class BreadManager {
 	private IBreadManager breadManager;
-	private List<Bread> breadlist;
+	private List<Bread> breadlist = new ArrayList<Bread>();
 	
 	public BreadManager(IBreadManager breadManager)
 	{
-		breadManager = breadManager;
-		//breadlist = new List<Bread>();
+		this.breadManager = breadManager;
 	}
 	
 	public boolean Add(Bread bread)
@@ -17,9 +17,17 @@ public class BreadManager {
 		return breadlist.add(bread);
 	}
 	
-	public Bread Remove(int number)
+	public boolean Remove(int number)
 	{
-		return breadlist.remove(number);
+		for(int i = 0; i < breadlist.size(); i ++)
+		{
+			if(number == breadlist.get(i).GetCode() )
+			{
+				breadlist.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public int GetSize()
@@ -29,11 +37,25 @@ public class BreadManager {
 	
 	public Bread Get(int code)
 	{
-		return breadManager.Get(code);
+		for(int i = 0; i < breadlist.size(); i ++)
+		{
+			if(code == breadlist.get(i).GetCode() )
+			{
+				return breadlist.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public boolean Find(int code)
 	{
-		return breadManager.Find(code);
+		for(int i = 0; i < breadlist.size(); i ++)
+		{
+			if(code == breadlist.get(i).GetCode() )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }
