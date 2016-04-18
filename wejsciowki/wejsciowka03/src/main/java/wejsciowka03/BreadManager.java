@@ -1,26 +1,30 @@
 package wejsciowka03;
 
+import java.util.List;
+
 public class BreadManager {
 	private IBreadManager breadManager;
-
+	private List<Bread> breadlist;
+	
 	public BreadManager(IBreadManager breadManager)
 	{
-		this.breadManager = breadManager;
+		breadManager = breadManager;
+		//breadlist = new List<Bread>();
 	}
 	
 	public boolean Add(Bread bread)
 	{
-		return breadManager.Add(bread);
+		return breadlist.add(bread);
 	}
 	
-	public boolean Remove(int number)
+	public Bread Remove(int number)
 	{
-		return breadManager.Remove(number);
+		return breadlist.remove(number);
 	}
 	
 	public int GetSize()
 	{
-		return breadManager.GetSize();
+		return breadlist.size();
 	}
 	
 	public Bread Get(int code)
