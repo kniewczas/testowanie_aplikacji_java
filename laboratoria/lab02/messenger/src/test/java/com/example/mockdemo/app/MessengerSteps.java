@@ -7,21 +7,22 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import com.example.mockdemo.messenger.MessageService;
+import com.example.mockdemo.messenger.MessageServiceSimpleImpl;
 
 
 public class MessengerSteps {
 
 	private Messenger messenger;
 	private MessageService ms;
-	private String SERVER;
-	private String MESSAGE;
+	private String SERVER ="";
+	private String MESSAGE ="";
 	
 	@Given("a messenger")
 	public void runMessenger() {
-		messenger = new Messenger(ms);
+		messenger = new Messenger(new MessageServiceSimpleImpl());
 	}
 	
-	@When("message sending to server '$server' is '$message'")
+	@When("message sending to server $server is $message")
 	public void sendMessage(String message, String server) {
 		SERVER = server;
 		MESSAGE = message;
