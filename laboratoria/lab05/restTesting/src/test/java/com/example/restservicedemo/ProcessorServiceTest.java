@@ -14,10 +14,22 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.dbunit.Assertion;
+import org.dbunit.IDatabaseTester;
+import org.dbunit.JdbcDatabaseTester;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.ITable;
+import org.dbunit.dataset.filter.DefaultColumnFilter;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import com.jayway.restassured.RestAssured;
 import com.example.restservicedemo.domain.Processor;
 
 public class ProcessorServiceTest {
+	
+	private static IDatabaseConnection connection;
+	private static IDatabaseTester databaseTester;	
 	
 	//6700K processor data
 	private static final String PROC_NAME = "6700K";
@@ -39,12 +51,17 @@ public class ProcessorServiceTest {
 		RestAssured.baseURI = "http://localhost";
 		RestAssured.port = 8080;
 		RestAssured.basePath = "/restservicedemo/api";
+		
+		IDataSet dataSet = new FlatXmlDataSetBuilder().build(
+				new FileInputStream(new File("src/test/resources/procData.xml")));
+		databaseTester.setDataSet(dataSet);
+		databaseTester.onSetup();
 	}
 	
 	@Test
 	public void insertProcessorTest(){
 	
-	    //delete("/processor/").then().assertThat().statusCode(201);
+	    delete("/processor/").then().assertThat().statusCode(201);
 		
 		given().contentType(MediaType.APPLICATION_JSON).
 		body(processor).
@@ -58,7 +75,7 @@ public class ProcessorServiceTest {
 	@Test
 	public void getProcessorTest(){
 		
-		//delete("/processor/").then().assertThat().statusCode(201);
+		delete("/processor/").then().assertThat().statusCode(201);
 		
 		//checking objects
 		given().contentType(MediaType.APPLICATION_JSON).
@@ -91,6 +108,8 @@ public class ProcessorServiceTest {
 	public void updateProcessorTest(){
 		
 		Processor newProcessor = new Processor(1, "E342", "Xeon", 3.07, 4);
+		
+		delete("/processor/").then().assertThat().statusCode(201);
 		
 		given().contentType(MediaType.APPLICATION_JSON).
 		body(processor).
