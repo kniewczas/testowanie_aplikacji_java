@@ -21,19 +21,15 @@ public class ProcessorManagerTest {
 	}
 	
 	@Test
-	public void getCar(){
+	public void testCrud(){
 		
-		Processor nowy = new Processor(3,"jakisdfdsfsdf", "haswel", 34.4, 3);
-		long id = 2;
-		long count;
-
-		int cos = pm.getRows();
+		Processor nowy = new Processor(3,"X435", "haswel", 34.4, 3);
+		long id = 3;
+		int count = pm.getRows();
 		
-		List<Processor> p = pm.showFastest();
-		
-		List<Processor> proc = pm.searchProcessors("haswel");
-		
-		List<Processor> costam = pm.advancedSearch("jakisdfdsfsdf", "haswel", 34.4, 3);
+		List<Processor> processors = pm.showFastest();
+		processors = pm.searchProcessors("haswel");
+		processors = pm.advancedSearch("X435", "haswel", 34.4, 3);
 	}
 	
 	

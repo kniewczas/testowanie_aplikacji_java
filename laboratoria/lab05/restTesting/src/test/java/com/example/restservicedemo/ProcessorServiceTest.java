@@ -50,7 +50,7 @@ public class ProcessorServiceTest {
 		when().
 		post("/processor/send").then().assertThat().statusCode(201);
 		
-		Processor outputProcessor = get("/processor/1").getClass();
+		Processor outputProcessor = get("/processor/1").as(Processor.class);
 		assertEquals(PROC_NAME, equalTo(outputProcessor.getModel()));
 	}
 	
